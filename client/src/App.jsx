@@ -12,14 +12,21 @@ function App() {
   const {authUser} = useContext(AuthContext)
   
   return (
-    <div className="bg-[url('/bgImage.svg')] bg-contain">
-      <Toaster/>
+    <div className="relative min-h-screen">
+  {/* Background image with blur */}
+  <div className="absolute inset-0 bg-[url('/bgImage.jpg')] bg-cover bg-center blur-sm"></div>
+
+  {/* Foreground content */}
+  <div className="relative z-10">
+    <Toaster />
     <Routes>
-     <Route path='/' element={authUser ? <HomePage/> : <Navigate to="/login"/>}/>
-     <Route path='/login' element={!authUser ? <LoginPage/> : <Navigate to="/"/>}/>
-     <Route path='/profile' element={authUser ? <ProfilePage/>: <Navigate to="/login"/>}/>
+      <Route path='/' element={authUser ? <HomePage/> : <Navigate to="/login"/>}/>
+      <Route path='/login' element={!authUser ? <LoginPage/> : <Navigate to="/"/>}/>
+      <Route path='/profile' element={authUser ? <ProfilePage/>: <Navigate to="/login"/>}/>
     </Routes>
-    </div>
+  </div>
+</div>
+
   )
 }
 
