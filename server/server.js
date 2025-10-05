@@ -33,7 +33,7 @@ io.on("connection", (socket) => {
 });
 
 // ------------------ Middleware ------------------
-app.use(express.json({ limit: "4mb" }));
+app.use(express.json({ limit: "20mb" }));
 app.use(cors());
 
 // ------------------ Routes ------------------
